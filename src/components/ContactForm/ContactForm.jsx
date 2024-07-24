@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import css from "./ContactForm.module.css"
   
 
 const validationSchema = Yup.object({
@@ -30,8 +31,8 @@ export default function ContactForm({ onSubmitForm }) {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <Form autoComplete="off">
-        <label>
+      <Form autoComplete="off" className={css.form}>
+        <label className={css.label}>
           Name:
           <Field
             type="text"
@@ -41,16 +42,16 @@ export default function ContactForm({ onSubmitForm }) {
           />
           <ErrorMessage name="name" />
         </label>
-        <label>
+        <label className={css.label}>
           Number:
-          <Field
+          <Field className ={css.field}
             type="tel"
             name="number"
             title="Please enter your phone number"
             required
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" className={css.button}>Add contact</button>
       </Form>
     </Formik>
   );

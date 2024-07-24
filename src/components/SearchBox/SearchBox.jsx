@@ -1,4 +1,4 @@
-
+import css from "./SearchBox.module.css"
 
 export  default function SearchBox() {
   const handleSubmit = (event) => {
@@ -13,6 +13,7 @@ export  default function SearchBox() {
         type="text"
         name="text"
         placeholder="Enter task text..."
+        className={css.input}
       />
     </form>
   );

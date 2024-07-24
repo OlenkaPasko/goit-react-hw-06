@@ -1,10 +1,11 @@
-import ContactForm from "./components/ContactForm/ContactForm";
-import SearchBox from "./components/SearchBox/SearchBox"
+import ContactForm from "../ContactForm/ContactForm";
+import SearchBox from "../SearchBox/SearchBox"
 //import ContactList from "./components/ContactList/ContactList"
+import css from "./App.module.css"
 
 export default function App() {
   return (
-    <div>
+    <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
