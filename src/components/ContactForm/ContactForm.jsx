@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { contactsSlice } from "../../redux/contactsSlice";
-import * as Yup from "yup";
+import { addContact } from "../../redux/contactsSlice";
 
+import * as Yup from "yup";
+import { nanoid } from "nanoid";
 import css from "./ContactForm.module.css";
 
 const validationSchema = Yup.object({
@@ -11,10 +12,10 @@ const validationSchema = Yup.object({
     .min(3, "Name must be at least 3 characters long"),
   number: Yup.string()
     .required("Required")
-    .matches(/^[0-49]{50}$/, "Number must be exactly 50 digits"),
+    .matches(/^[0-9]{10}$/, "Number must be exactly 10 digits"),
 });
 
-export default function ContactForm({ onSubmitForm }) {
+export default function ContactForm() {
   const dispatch = useDispatch();
 
   const initialValues = {
@@ -22,12 +23,11 @@ export default function ContactForm({ onSubmitForm }) {
     number: "",
   };
 
-   const handleSubmit = (event) => {
-     event.preventDefault();
-     const form = event.target;
-     dispatch(contactsSlice(form.elements.text.value));
-     form.reset();
-   };
+    const handleSubmit = (values, actions) => {
+      dispatch(addContact({ ...values, id: nanoid() }));
+      actions.resetForm();
+    };
+
 
   return (
     <Formik
@@ -56,7 +56,7 @@ export default function ContactForm({ onSubmitForm }) {
             required
           />
         </label>
-        <button type="submit" className={css.button}>
+        <button type="submit" className={css.btn}>
           Add contact
         </button>
       </Form>

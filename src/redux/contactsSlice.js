@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { contacts: [], filter: "" };
+const initialState = { items: [] };
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -11,24 +11,22 @@ const contactsSlice = createSlice({
   reducers: {
     addContact(state, action) {
       console.log(action);
-      state.contacts.push(action.payload);
+      state.items.push(action.payload);
     },
     deleteContact(state, action) {
-      state.contacts = state.contacts.filter(
+      state.items = state.items.filter(
         (contact) => contact.id !== action.payload
       );
     },
-    searchContact(state, action) {
-      state.filter = action.payload;
-    },
+  
   },
 });
 // Генератори екшенів для використання в dispatch
-export const { addContact, deleteContact, searchContact } =
+export const { addContact, deleteContact} =
   contactsSlice.actions;
 
 // Функція-селектор для використання в useSelector
-export const selectContacts = (state) => state.contacts;
+export const selectContacts = (state) => state.contacts.items;
 
 // Редюсер слайсу
 export default contactsSlice.reducer;
