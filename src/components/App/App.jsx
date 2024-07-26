@@ -1,6 +1,7 @@
-import ContactForm from "../ContactForm/ContactForm";
 import { useSelector, useDispatch } from "react-redux";
-import { selectContacts,deleteContact } from "../../redux/contactsSlice";
+import { selectContacts, deleteContact } from "../../redux/contactsSlice";
+
+import ContactForm from "../ContactForm/ContactForm";
 import SearchBox from "../SearchBox/SearchBox"
 //import ContactList from "./components/ContactList/ContactList"
 import css from "./App.module.css"
@@ -17,7 +18,6 @@ export default function App() {
       <ContactForm />
       <h2>Contacts</h2>
       <SearchBox />
-      
     </div>
   );
 }
