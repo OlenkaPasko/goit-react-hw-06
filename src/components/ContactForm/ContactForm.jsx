@@ -23,11 +23,10 @@ export default function ContactForm() {
     number: "",
   };
 
-    const handleSubmit = (values, actions) => {
-      dispatch(addContact({ ...values, id: nanoid() }));
-      actions.resetForm();
-    };
-
+  const handleSubmit = (values, actions) => {
+    dispatch(addContact({ ...values, id: nanoid() }));
+    actions.resetForm();
+  };
 
   return (
     <Formik
@@ -38,12 +37,7 @@ export default function ContactForm() {
       <Form autoComplete="off" className={css.form}>
         <label className={css.label}>
           Name:
-          <Field
-            type="text"
-            name="name"
-            title="Please enter your name"
-            required
-          />
+          <Field type="text" name="name" title="Please enter your name" />
           <ErrorMessage name="name" />
         </label>
         <label className={css.label}>
@@ -53,8 +47,8 @@ export default function ContactForm() {
             type="tel"
             name="number"
             title="Please enter your phone number"
-            required
           />
+          <ErrorMessage name="number" />
         </label>
         <button type="submit" className={css.btn}>
           Add contact

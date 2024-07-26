@@ -1,20 +1,27 @@
-import css from "./SearchBox.module.css"
+import css from "./SearchBox.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { changeFilter, selectNameFilter } from "../../redux/filtersSlice";
 
-export  default function SearchBox() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    form.reset();
+export default function SearchBox() {
+  const dispatch = useDispatch();
+  const nameFilter = useSelector(selectNameFilter);
+
+  //для зміни фільтра
+  const handleChange = (event) => {
+    dispatch(changeFilter(event.target.value));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="text"
-        placeholder="Enter task text..."
-        className={css.input}
-      />
-    </form>
+    
+      <label>
+        <input
+          type="text"
+          name="text"
+          value={nameFilter}
+          onChange={handleChange}
+          placeholder="Enter task text..."
+          className={css.input}
+        />
+      </label>
   );
-};
+}
