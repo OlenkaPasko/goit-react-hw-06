@@ -1,18 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { deleteContact } from "../../redux/contactsSlice";
-
 import css from "./Contact.module.css"
-export default function Contact({ name, number, onDeleteContact }) {
-  //const dispatch = useDispatch();
-  //const contacts = useSelector((state) => state.contacts.items);
-  //const filter = useSelector((state) => state.filters.name);
 
-  //const handleDeleteContact = (id) => {
-   // dispatch(deleteContact(id));
-  //};
-  //const filteredContacts = contacts.filter((contact) =>
-   // contact.name.toLowerCase().includes(filter.toLowerCase())
-  //);
+export default function Contact({ name, number, onDeleteContact }) {
+
   return (
     <div>
       <div >
