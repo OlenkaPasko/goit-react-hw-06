@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact, selectContacts } from "../../redux/contactsSlice";
-
 import { selectNameFilter } from "../../redux/filtersSlice";
+
+import css from "./ContactList.module.css"
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -23,7 +24,11 @@ const ContactList = () => {
           <p>
             {item.name}: {item.number}
           </p>
-          <button type="button" onClick={() => handleDelete(item.id)}>
+          <button
+            type="button"
+            onClick={() => handleDelete(item.id)}
+            className={css.button}
+          >
             Delete
           </button>
         </li>
