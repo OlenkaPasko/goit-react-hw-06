@@ -3,8 +3,7 @@
 
 import ContactForm  from "../ContactForm/ContactForm";
 import SearchBox from "../SearchBox/SearchBox"
-import Contact from "../Contact/Contact"
-
+import ContactList from "../ContactList/ContactList"
 import css from "./App.module.css"
 
 export default function App() {
@@ -15,7 +14,7 @@ export default function App() {
       <ContactForm />
       <h2>Contacts</h2>
       <SearchBox />
-      <Contact />
+      <ContactList />
     </div>
   );
 }
